@@ -6,7 +6,7 @@
 
 int inputvalidation(char value[])
 {
-	int length = strlen(value), count = 0, number = atoi(value);
+    int length = strlen(value), count = 0, number = atoi(value);
     count = (number == 0) ? 1 : log10(number) + 1;
     if (number == 0 && value[0] != '0' || count != length)
     {
