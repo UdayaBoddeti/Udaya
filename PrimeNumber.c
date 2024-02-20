@@ -28,11 +28,11 @@ int isPrime(char value[])
 	}	
 	if (number == 0 || number == 1)
 	{
-       isprime = 0;
+	isprime = 0;
 	}	
 	else if (number == 2 || number == 3)
 	{
-       isprime = 1;
+	isprime = 1;
 	}
 	else if(number % 2 == 0)
 	{
@@ -47,7 +47,7 @@ int isPrime(char value[])
 			if (number % counter == 0)
 			{
 			   isprime = 0;	
-               break;
+	       break;
 			}	
 		}	
 	}
