@@ -1,4 +1,4 @@
-// To check whether the given number is prime number or not
+// To check whether the given number is prime number
 
 #include <stdio.h>
 #include <math.h>
