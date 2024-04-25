@@ -3,11 +3,11 @@
 ```code
     Method : GET 
     Endpoint : /api/employee/ListCerts 
-    Query params : ?sort=desc
+    Query params : ?sort=(asc/desc)&sortBy=(CertificateName/IssueDate/ExpiryDate)
     Payload :
        Request Payload:
             EmployeeId : "EmployeeId"
-    Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
+    Response Json : [{"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}, {...}, ]
     Response Code : 200(Ok), 404(Employee not found)
 ```
 ## Add Cert
@@ -64,6 +64,6 @@
        Request Payload:
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
-    Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
+    Response Json : [{"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}, {...}, ]
     Response Code : 200(Ok), 404(Employee not found)
 ```       
