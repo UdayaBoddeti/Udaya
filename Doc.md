@@ -34,7 +34,7 @@
 ```code 
     Method : PUT
     Endpoint : /api/employee/UpdateCert 
-    Query params : /updateField = FieldName
+    Query params : ?updateField = FieldName
     Payload : 
        Request Payload:
             EmployeeId : "EmployeeId"
