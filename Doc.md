@@ -6,9 +6,7 @@
     Query params : ?sort=desc
     Payload :
        Request Payload:
-
             EmployeeId : "EmployeeId"
-          
     Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
     Response Code : 200(Ok), 404(Employee not found)
 ```
@@ -20,7 +18,6 @@
     Query params : None
     Payload : 
        Request Payload:
-
             EmployeeId : "EmployeeId"
             CertificateName : "CertificateName"
             IssuingOrganisation : "OraganisationName"
@@ -28,7 +25,6 @@
             ExpiryDate : "DD-MM-YYYY"
             CredentialId : "CredentialId"
             CredentialUrl : "CredentialUrl"
-
     Response Json : {Status : "Status"}
     Response Code : 200(Ok), 404(Employee not found)
 ```    
@@ -41,11 +37,9 @@
     'Query params : /updateField = FieldName
     'Payload : 
        Request Payload:
-
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
             FieldName : "FieldValue"
-
     'Response Json : {Status : "Status"}
     'Response Code : 200(Ok), 404(Employee not found)
 ```
@@ -56,10 +50,8 @@
     'Endpoint : /api/employee/DeleteCert 
     'Payload : None
        Request Payload:
-
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
-
     'Response Json : {Status : "Status"}
     'Response Code : 200(Ok), 404(Employee not found)
 ```
@@ -70,10 +62,8 @@
     'Endpoint : /api/employee/SearchCert 
     'Payload : None
        Request Payload:
-
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
-
     'Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
     'Response Code : 200(Ok), 404(Employee not found)
 ```       
