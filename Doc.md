@@ -25,45 +25,45 @@
             ExpiryDate : "DD-MM-YYYY"
             CredentialId : "CredentialId"
             CredentialUrl : "CredentialUrl"
-    Response Json : {Status : "Status"}
+    Response Json : {Message : "Message"}
     Response Code : 200(Ok), 404(Employee not found)
 ```    
 
 ## Update Cert
 
 ```code 
-    'Method : PUT
-    'Endpoint : /api/employee/UpdateCert 
-    'Query params : /updateField = FieldName
-    'Payload : 
+    Method : PUT
+    Endpoint : /api/employee/UpdateCert 
+    Query params : /updateField = FieldName
+    Payload : 
        Request Payload:
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
             FieldName : "FieldValue"
-    'Response Json : {Status : "Status"}
-    'Response Code : 200(Ok), 404(Employee not found)
+    Response Json : {Message : "Message"}
+    Response Code : 200(Ok), 404(Employee not found)
 ```
 ## Delete Cert
 
 ```code
-    'Method : DELETE
-    'Endpoint : /api/employee/DeleteCert 
-    'Payload : None
+    Method : DELETE
+    Endpoint : /api/employee/DeleteCert 
+    Payload : None
        Request Payload:
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
-    'Response Json : {Status : "Status"}
-    'Response Code : 200(Ok), 404(Employee not found)
+    Response Json : {Message : "Message"}
+    Response Code : 200(Ok), 404(Employee not found)
 ```
 ## Search Cert
 
 ```code
-    'Method : GET
-    'Endpoint : /api/employee/SearchCert 
-    'Payload : None
+    Method : GET
+    Endpoint : /api/employee/SearchCert 
+    Payload : None
        Request Payload:
             EmployeeId : "EmployeeId"
             CredentialId : "CredentialId"
-    'Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
-    'Response Code : 200(Ok), 404(Employee not found)
+    Response Json : {"CertificateName": "CertificateName", "IssuingOrganisation": "OraganisationName", "IssueDate": "DD-MM-YYYY", "ExpiryDate": "DD-MM-YYYY", "CredentialId": "CredentialId", "CredentialUrl": "CredentialUrl"}
+    Response Code : 200(Ok), 404(Employee not found)
 ```       
