@@ -72,12 +72,17 @@
 ```code 
     Method : PUT
     Endpoint : /api/:employeeId/certs/:credentialId
-    Query params : ?updateField = FieldName
+    Query params : None
     Payload : 
-       Request Payload:
-            {
-               FieldName : "FieldValue"
-            }   
+        Request Payload:
+        {
+            "certificateName" : "CertificateName"
+            "issuingOrganisation" : "OraganisationName"
+            "issueDate" : "DD-MM-YYYY"
+            "expiryDate" : "DD-MM-YYYY"
+            "credentialId" : "CredentialId"
+            "credentialUrl" : "CredentialUrl"
+        }   
     Response Json : {Message : "Message"}
     Response Code : 200(Ok), 404(Employee not found)
 ```
@@ -86,6 +91,7 @@
 ```code
     Method : DELETE
     Endpoint : /api/:employeeId/certs/:credentialId 
+    Query params : None
     Payload : None
     Response Json :
         Success:
@@ -109,6 +115,7 @@
 ```code
     Method : GET
     Endpoint : /api/:employeeId/searchCert/:credentialId
+    Query params : None
     Payload : None
     Response Json : 
         Success:
