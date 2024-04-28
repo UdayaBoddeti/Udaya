@@ -3,7 +3,7 @@
 ```code
     Method : GET 
     Endpoint : /api/:employeeId/certs 
-    Query params : ?sort=(asc/desc)&sortBy=(CertificateName/IssueDate/ExpiryDate)
+    Query params : ?sort_by=(CertificateName/IssueDate/ExpiryDate)&sort_order=(DESC/ASC)
     Payload : None
     Response Json : 
         Success:
@@ -23,11 +23,10 @@
             {
                 "code": "errorCode",
                 "message": "errorMessage",
-                "description": "errorDescription"
             }
         }
     
-    Response Code : 200(Ok), 404(Employee not found)
+    Response Code : 200(Ok), 404(Employee not found), 500(Internal server error)
 ```
 ## Add Cert
  
@@ -38,22 +37,26 @@
     Payload : 
        Request Payload:
           { 
-            "certificateName" : "CertificateName"
-            "issuingOrganisation" : "OraganisationName"
-            "issueDate" : "DD-MM-YYYY"
-            "expiryDate" : "DD-MM-YYYY"
-            "credentialId" : "CredentialId"
-            "credentialUrl" : "CredentialUrl"
+            "certificate_name" : "CertificateName"
+            "issuing_organisation" : "OraganisationName"
+            "issue_date" : "DD-MM-YYYY"
+            "expiry_date" : "DD-MM-YYYY"
+            "credential_id" : "CredentialId"
+            "credential_url" : "CredentialUrl"
           }    
     Response Json :
         Success:
         {
-            "certificateName" : "CertificateName"
-            "issuingOrganisation" : "OraganisationName"
-            "issueDate" : "DD-MM-YYYY"
-            "expiryDate" : "DD-MM-YYYY"
-            "credentialId" : "CredentialId"
-            "credentialUrl" : "CredentialUrl"
+            "AddedCert":
+            {
+                "certificateName" : "CertificateName"
+                "issuingOrganisation" : "OraganisationName"
+                "issueDate" : "DD-MM-YYYY"
+                "expiryDate" : "DD-MM-YYYY"
+                "credentialId" : "CredentialId"
+                "credentialUrl" : "CredentialUrl"
+            }
+            "Message": "Message"
         }
        Failure:
         {
@@ -61,10 +64,9 @@
             {
                 "code": "errorCode",
                 "message": "errorMessage",
-                "description": "errorDescription"
             }
         }
-    Response Code : 200(Ok), 404(Employee not found)
+    Response Code : 200(Ok), 404(Employee not found), 500(Internal server error)
 ```    
 
 ## Update Cert
@@ -75,16 +77,37 @@
     Query params : None
     Payload : 
         Request Payload:
+            {
+                "certificate_name" : "CertificateName"
+                "issuing_organisation" : "OraganisationName"
+                "issue_date" : "DD-MM-YYYY"
+                "expiry_date" : "DD-MM-YYYY"
+                "credential_id" : "CredentialId"
+                "credential_url" : "CredentialUrl"
+            }
+    Response Json : 
+        Success:
         {
-            "certificateName" : "CertificateName"
-            "issuingOrganisation" : "OraganisationName"
-            "issueDate" : "DD-MM-YYYY"
-            "expiryDate" : "DD-MM-YYYY"
-            "credentialId" : "CredentialId"
-            "credentialUrl" : "CredentialUrl"
-        }   
-    Response Json : {Message : "Message"}
-    Response Code : 200(Ok), 404(Employee not found)
+            "UpdatedCert":
+            {
+                "certificateName" : "CertificateName"
+                "issuingOrganisation" : "OraganisationName"
+                "issueDate" : "DD-MM-YYYY"
+                "expiryDate" : "DD-MM-YYYY"
+                "credentialId" : "CredentialId"
+                "credentialUrl" : "CredentialUrl"
+            }
+            "Message": "Message"    
+        } 
+        Failure:
+        {
+            "error":
+            {
+                "code": "errorCode",
+                "message": "errorMessage",
+            }
+        }  
+    Response Code : 200(Ok), 404(Employee not found), 500(Internal server error)
 ```
 ## Delete Cert
 
@@ -105,10 +128,9 @@
             {
                 "code": "errorCode",
                 "message": "errorMessage",
-                "description": "description"
             }
         }    
-    Response Code : 200(Ok), 404(Employee not found)
+    Response Code : 200(Ok), 404(Employee not found), 500(Internal server error)
 ```
 ## Search Cert
 
@@ -136,5 +158,5 @@
                 "description": "errorDescription"
             }
         }
-    Response Code : 200(Ok), 404(Employee not found)
+    Response Code : 200(Ok), 404(Employee not found), 500(Internal server error)
 ```       
