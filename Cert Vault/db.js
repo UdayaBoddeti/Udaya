@@ -1,9 +1,10 @@
 import { connectDatabase } from './connection.js'
+import crypto from "crypto"
+import md5 from "md5"
 
 const db = await connectDatabase()
 
-export async function addCertificate(certificateData, EmployeeId)
-{
+export async function addCertificate(certificateData, EmployeeId) {
     let responseCode, responseData;
     const query = 'Insert into Certificates(CertificateName, IssuingOraganisation, IssueDate, ExpiryDate, CredentialId, CredentialUrl, EmployeeId) values (?,?,?,?,?,?,?)'
     try {
@@ -20,8 +21,7 @@ export async function addCertificate(certificateData, EmployeeId)
     return [responseCode, responseData]
 }
 
-export async function getAllCertificates(employeeId, sort_by, sort_order)
-{
+export async function getAllCertificates(employeeId, sort_by, sort_order) {
   let responseCode, responseData  
   try {
         const query = "SELECT CertificateName, IssuingOraganisation, IssueDate, ExpiryDate, CredentialId, CredentialUrl FROM Certificates where EmployeeId = ? order by " + sort_by + " " +sort_order
@@ -64,8 +64,7 @@ export async function deleteCertificate(employeeId, credentialId) {
    return [responseCode, responseData]   
 }
 
-export async function updateCertificate(certificateData, EmployeeId, CredentialId)
-{
+export async function updateCertificate(certificateData, EmployeeId, CredentialId) {
   let responseCode, responseData
   const query = "update Certificates set CertificateName = ?, IssuingOraganisation = ?, IssueDate = ?, ExpiryDate = ?, CredentialId= ?, CredentialUrl = ? where EmployeeId = ? and CredentialId = ?"
   try {
@@ -86,9 +85,63 @@ export async function updateCertificate(certificateData, EmployeeId, CredentialI
     return [responseCode, responseData]
 }
 
-async function getAffectedRow(credentialId, employeeId)
-{
+export async function validateUser(userName, password) {
+    let passwordHash = md5("9u5" + password);
+    let query = "select * from user where UserName=? and Password=?";
+    try
+    {
+        let result = await db.get(query, [userName, passwordHash]);
+        if (result)
+        {
+            let token = await generateToken();
+            await updateUser(result.EmployeeId, token);
+            return ({Token: token});
+        }
+        else
+        {
+            return ({Status: "User Invalid"});
+        }
+    }
+    catch(error)
+    {
+        console.log(error);
+        return error;
+    }
+}
+
+async function generateToken() {
+    const token = crypto.randomBytes(14).toString('hex')
+    return token;
+}
+
+async function updateUser(employeeId, token) {
+    let query = "update user set Token=? where EmployeeId=?";
+    try
+    {
+        let result = await db.run(query, [token, employeeId]);
+        return result.changes;
+    }
+    catch(error)
+    {
+        return error;
+    }
+}
+
+export async function getAffectedRow(credentialId, employeeId) {
    const query = "select CertificateName, IssuingOraganisation, IssueDate, ExpiryDate, CredentialId, CredentialUrl from  Certificates where EmployeeId = ? and CredentialId = ?"
    const result = await db.get(query, employeeId, credentialId)
    return result
+}
+
+export async function validateToken(token) {
+   
+    const query = "select Token, EmployeeId from user where Token=?"
+    const result = await db.get(query, token)
+    if (result) {
+
+        return [true, result.EmployeeId]
+    }
+    else {
+        return [false, null]
+    }
 }
